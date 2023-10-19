@@ -3,7 +3,7 @@ import "./App.css";
 import Nav from "./views/Nav";
 import { useState, useEffect } from "react";
 import Todo from "./views/Todo";
-
+import Covid from "./views/Covid";
 // template + logic
 // JSX
 function App() {
@@ -69,7 +69,10 @@ function App() {
         <h2>
           Hello guys, I'm {name} - {address}
         </h2>
-        <Todo
+
+        <Covid />
+
+        {/* <Todo
           todos={todos}
           title={"All todos"}
           deleteDataTodo={deleteDataTodo}
@@ -87,7 +90,7 @@ function App() {
         ></input>
         <button onClick={(event) => handleEventClick(event)} type="button">
           Click me
-        </button>
+        </button> */}
       </header>
     </div>
   );
