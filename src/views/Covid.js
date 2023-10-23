@@ -1,35 +1,15 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import useFetch from "../customize/fetch";
 
 const Covid = () => {
-  const [dataCovid, setDataCovid] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    //setTimeout(() => {
-    try {
-      async function fetchDataCovid() {
-        let res = await axios.get("https://covid-api.com/api/regions");
-        let data = res && res.data ? res.data.data : [];
-        setDataCovid(data);
-      }
-      fetchDataCovid();
-      setLoading(false);
-      setIsError(false);
-    } catch (e) {
-      setIsError(true);
-      setLoading(false);
-      console.log("check error", e);
-      console.log("check error name", e.name);
-      console.log("check error message", e.message);
-    }
-
-    //}, 3000);
-  }, []);
+  const {
+    data: dataCovid,
+    loading,
+    isError,
+  } = useFetch("https://covid-api.com/api/regions", true);
 
   return (
-    <>
+    <div style={{ background: "#282c34", color: "white" }}>
       <h4>Test Call Covid API</h4>
       <table>
         {console.log("check", dataCovid)}
@@ -71,7 +51,7 @@ const Covid = () => {
           )}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
